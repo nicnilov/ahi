@@ -11,10 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150917203203) do
+ActiveRecord::Schema.define(version: 20150919191908) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "aircrafts", force: :cascade do |t|
+    t.string   "name"
+    t.string   "slug"
+    t.datetime "conceived_at"
+    t.datetime "flown_at"
+    t.datetime "introduced_at"
+    t.datetime "retired_at"
+    t.datetime "produced_since"
+    t.datetime "produced_till"
+    t.integer  "number_built"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "sessions", force: :cascade do |t|
     t.string   "session_id", null: false
@@ -25,5 +39,10 @@ ActiveRecord::Schema.define(version: 20150917203203) do
 
   add_index "sessions", ["session_id"], name: "index_sessions_on_session_id", unique: true, using: :btree
   add_index "sessions", ["updated_at"], name: "index_sessions_on_updated_at", using: :btree
+
+  create_table "variants", force: :cascade do |t|
+    t.integer "aircraft_id", null: false
+    t.integer "variant_id",  null: false
+  end
 
 end
