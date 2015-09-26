@@ -15,6 +15,7 @@ gem 'elasticsearch-model'                   # ES integration to ActiveRecord mod
 gem 'elasticsearch-rails'                   # ES Rails bridge
 gem 'bootstrap-sass', '~> 3.3.0'            # For responsive scaffolding and some styles
 gem 'sitemap_generator'                     # See config/sitemap.rb
+gem 'bootstrap_form'                        # Form builder using bootstrap styles
 
 gem 'fog', '~> 1.32.0', require: 'fog/aws/storage'        # Cloud APIs wrapper for file storage, only loading AWS support
 
