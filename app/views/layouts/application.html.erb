@@ -9,6 +9,7 @@
   <%= stylesheet_link_tag controller_name, media: 'all' if Rails.application.assets.find_asset("#{controller_name}.css") %>
   <%= yield :head %>
   <%= javascript_include_tag 'application', defer: :defer %>
+  <%= javascript_include_tag controller_name, defer: :defer if Rails.application.assets.find_asset("#{controller_name}.js") %>
   <%= csrf_meta_tags %>
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   root 'welcome#index'
 
-  # resource :aircraft
+  resources :aircraft do
+    collection do
+      get :recently_added, as: :recently_added
+    end
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

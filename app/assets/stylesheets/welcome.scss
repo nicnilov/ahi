@@ -1,37 +1,5 @@
 $title-color: #003E9F; //#0F5DC1;
 
-body {
-  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  background: image_url('bg-002.jpg') lightskyblue no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  background-size: cover;
-  -o-background-size: cover;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  text-transform: uppercase;
-  font-family: "Josefin Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 700;
-  letter-spacing: 1px;
-}
-
-p {
-  font-size: 1.25em;
-  line-height: 1.6;
-  color: #000;
-}
-
-hr {
-  max-width: 400px;
-  border-color: #999999;
-}
-
 .brand-name {
   color: $title-color;
   margin: 1em;
@@ -78,22 +46,6 @@ hr {
   min-height: 400px;
   background: #fff;
   background: rgba(255, 255, 255, 0.6);
-}
-
-footer {
-  margin-top: 2%;
-  height: 60px;
-  color: white;
-  background: rgba(255, 255, 255, 0.0);
-}
-
-.row-no-padding {
-  margin-left: 0;
-  margin-right: 0;
-  [class*="col-"] {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-  }
 }
 
 @media screen and (min-width: 768px) {
