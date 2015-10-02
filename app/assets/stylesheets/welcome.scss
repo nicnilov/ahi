@@ -1,3 +1,5 @@
+$title-color: #003E9F; //#0F5DC1;
+
 body {
   font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   background: image_url('bg-002.jpg') lightskyblue no-repeat center center fixed;
@@ -30,119 +32,99 @@ hr {
   border-color: #999999;
 }
 
-.brand,
-.address-bar {
-  display: none;
-}
-
-
-.img-full {
-  min-width: 100%;
-}
-
-.brand-before,
 .brand-name {
-  text-transform: none;
-}
-
-.brand-before {
-  margin: 15px 0;
-}
-
-.brand-name {
-  color: darkblue;
+  color: $title-color;
   margin: 1em;
   font-size: 2em;
 }
 
 .tagline-divider {
-  margin: 15px auto 3px;
+  margin: 10px auto;
   max-width: 250px;
-  border-color: darkblue;
+  border-color: $title-color;
 }
 
-.box {
+.title-box {
+  margin-top: 15px;
   margin-bottom: 20px;
   padding: 30px 15px;
   background: #fff;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.6);
 }
 
-.intro-text {
-  text-transform: uppercase;
-  font-size: 1.25em;
-  font-weight: 400;
-  letter-spacing: 1px;
+.section-box {
+  padding: 0;
+  & > div:first-of-type {
+    font-size: 2em;
+    font-weight: 600;
+    color: $title-color;
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 80px 15px;
+    background: #fff;
+    background: rgba(255, 255, 255, 0.6);
+  }
+  &.left > div:first-of-type {
+    margin-right: 0;
+  }
+  &.right > div:first-of-type {
+    margin-right: 0;
+  }
 }
 
-.img-border {
-  float: none;
-  margin: 0 auto 0;
-  border: #999999 solid 1px;
-}
-
-.img-left {
-  float: none;
-  margin: 0 auto 0;
+.recent-box {
+  margin-bottom: 20px;
+  padding: 10px;
+  min-height: 400px;
+  background: #fff;
+  background: rgba(255, 255, 255, 0.6);
 }
 
 footer {
-  background: #fff;
-  background: rgba(255, 255, 255, 0.9);
+  margin-top: 2%;
+  height: 60px;
+  color: white;
+  background: rgba(255, 255, 255, 0.0);
 }
 
-footer p {
-  margin: 0;
-  padding: 50px 0;
+.row-no-padding {
+  margin-left: 0;
+  margin-right: 0;
+  [class*="col-"] {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
 }
 
 @media screen and (min-width: 768px) {
-  .box {
+  .title-box {
     margin-top: 6%;
+    background: rgba(255, 255, 255, 0.7);
   }
 
   .brand-name {
     font-size: 2em;
   }
 
-  .brand {
-    display: inherit;
-    margin: 0;
-    padding: 30px 0 10px;
-    text-align: center;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-    font-family: "Josefin Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 5em;
-    font-weight: 700;
-    line-height: normal;
-    color: #fff;
+  .section-box {
+    & > div:first-of-type {
+      background: rgba(255, 255, 255, 0.7);
+    }
+    &.left > div:first-of-type {
+      margin-right: 10px;
+    }
+    &.right > div:first-of-type {
+      margin-left: 10px;
+    }
   }
 
-  .top-divider {
-    margin-top: 0;
-  }
-
-  .img-left {
-    float: left;
-    margin-right: 25px;
-  }
-
-  .address-bar {
-    display: inherit;
-    margin: 0;
-    padding: 0 0 40px;
-    text-align: center;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-    text-transform: uppercase;
-    font-size: 1.25em;
-    font-weight: 400;
-    letter-spacing: 3px;
-    color: #fff;
+  .recent-box {
+    background: rgba(255, 255, 255, 0.7);
   }
 }
 
 @media screen and (min-width: 992px) {
-  .box {
+  .title-box {
     margin-top: 8%;
   }
 
@@ -152,8 +134,8 @@ footer p {
 }
 
 @media screen and (min-width: 1200px) {
-  .box {
-    margin-top: 10%;
+  .title-box {
+    margin-top: 8%;
     &:after {
       content: '';
       display: table;
@@ -162,6 +144,12 @@ footer p {
   }
 
   .brand-name {
-    font-size: 3.5em;
+    font-size: 3em;
+  }
+
+  .section-box {
+    & > div:first-of-type {
+      padding: 120px 15px;
+    }
   }
 }
