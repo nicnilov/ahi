@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151002172253) do
+ActiveRecord::Schema.define(version: 20151002200234) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,9 +29,11 @@ ActiveRecord::Schema.define(version: 20151002172253) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "alias"
+    t.string   "variant_type",   null: false
   end
 
-  add_index "aircrafts", ["name"], name: "index_aircrafts_on_name", unique: true, using: :btree
+  add_index "aircrafts", ["name", "variant_type"], name: "aircrafts_unique", unique: true, using: :btree
+  add_index "aircrafts", ["variant_type"], name: "index_aircrafts_on_variant_type", using: :btree
 
   create_table "aircrafts_manufacturers", id: false, force: :cascade do |t|
     t.integer "aircraft_id",     null: false
