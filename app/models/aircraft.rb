@@ -3,7 +3,7 @@ class Aircraft < ActiveRecord::Base
   friendly_id :generate_slug, use: :slugged
 
   validates_presence_of :manufacturers, :variant_type
-  validates_presence_of :priors, if: Proc.new { |aircraft| aircraft.block? }
+  validates_presence_of :priors, if: Proc.new { |aircraft| aircraft.block? || aircraft.modification?}
 
   validates_uniqueness_of :name, scope: :variant_type
   validates_uniqueness_of :slug
@@ -33,8 +33,47 @@ class Aircraft < ActiveRecord::Base
     self.priors.exists? # TODO: make sure variant_type is always filled out
   end
 
+  def modification?
+    self.variant_type == 'modification'
+  end
+
   def block?
     self.variant_type == 'block'
+  end
+
+  def family_tree
+    <<-SQL
+      WITH RECURSIVE ancestors(aircraft_id, variant_id) AS (
+        SELECT
+          v."aircraft_id",
+          v."variant_id"
+        FROM "variants" AS v
+        WHERE v."variant_id" = #{self.id}
+      UNION ALL
+        SELECT
+            v."aircraft_id",
+            v."variant_id"
+          FROM "variants" AS v, ancestors AS a
+          WHERE v."variant_id" = a.aircraft_id
+      ),
+      descendants(aircraft_id, variant_id) AS (
+        SELECT
+          v."aircraft_id",
+          v."variant_id"
+        FROM "variants" AS v
+        WHERE v."aircraft_id" = #{self.id}
+      UNION ALL
+        SELECT
+          v."aircraft_id",
+          v."variant_id"
+        FROM "variants" AS v, descendants AS d
+        WHERE v."aircraft_id" = d.variant_id
+      )
+      SELECT * FROM ancestors
+      UNION
+      SELECT * FROM descendants
+      ORDER BY aircraft_id
+    SQL
   end
 
   private
