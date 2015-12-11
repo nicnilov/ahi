@@ -1,6 +1,6 @@
 class Manufacturer < ActiveRecord::Base
   extend FriendlyId
-  friendly_id :name, use: :slugged
+  friendly_id :partial_name, use: :slugged
 
   validates_uniqueness_of :name
 

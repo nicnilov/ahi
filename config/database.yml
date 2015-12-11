@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  host: localhost
+  database: ahi_development
+  username: <%= ENV['AHI_DATABASE_USERNAME'] %>
+  password: <%= ENV['AHI_DATABASE_PASSWORD'] %>
+
+test:
+  <<: *default
+  host: localhost
+  database: ahi_test
+  username: <%= ENV['AHI_DATABASE_USERNAME'] %>
+  password: <%= ENV['AHI_DATABASE_PASSWORD'] %>
+
+production:
+  <<: *default
+  url: <%= ENV['DATABASE_URL'] %> #  DATABASE_URL="postgres://myuser:mypass@localhost/somedatabase?pool=5&encoding=unicode"

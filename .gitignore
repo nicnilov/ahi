@@ -9,6 +9,7 @@
 /.bundle
 /.rbenv-vars
 /.env
+/.ruby-version
 # Ignore all logfiles and tempfiles.
 /log/*
 !/log/.keep
