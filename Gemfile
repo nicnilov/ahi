@@ -21,6 +21,7 @@ gem 'fog', '~> 1.32.0', require: 'fog/aws/storage'        # Cloud APIs wrapper f
 
 gem 'pry-rails'                             # better REPL
 gem 'puma'                                  # fast rails server
+gem 'coveralls', require: false             # test coverage monitor
 
 group :assets do
   gem 'coffee-rails', '~> 4.1.0'            # CoffeeScript transpiler
