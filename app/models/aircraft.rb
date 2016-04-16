@@ -3,7 +3,7 @@ class Aircraft < ActiveRecord::Base
   friendly_id :generate_slug, use: :slugged
 
   validates_presence_of :manufacturers, :variant_type
-  validates_presence_of :priors, if: Proc.new { |aircraft| aircraft.block? || aircraft.modification?}
+  validates_presence_of :priors, if: Proc.new { |aircraft| aircraft.block? || aircraft.modification? }
 
   validates_uniqueness_of :name, scope: :variant_type
   validates_uniqueness_of :slug
@@ -30,7 +30,7 @@ class Aircraft < ActiveRecord::Base
   scope :blocks, -> (aircraft) { aircraft.variants.where(variant_type: :block) }
 
   def variant?
-    self.priors.exists? # TODO: make sure variant_type is always filled out
+    self.priors.exists?
   end
 
   def modification?
@@ -92,10 +92,10 @@ class Aircraft < ActiveRecord::Base
   end
 
   def should_generate_new_friendly_id?
-    (new_record? && self.slug.blank?) || !self.slug.present?
+    self.slug.blank?
   end
 
   def reset_slug_on_errors
-    self.slug = nil if self.errors.present?
+    self.slug = nil if self.new_record? && self.errors.present?
   end
 end
