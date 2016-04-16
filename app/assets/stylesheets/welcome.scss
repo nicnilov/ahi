@@ -1,10 +1,12 @@
 $title-color: white;
 $box-background-color: rgba(0,52,151,0.2);
+$text-shadow: 1px 1px 4px rgba(0, 52, 151, 0.5);
 
 .brand-name {
   color: $title-color;
   margin: 1em;
   font-size: 2em;
+  text-shadow: $text-shadow;
   @media screen and (min-width: 768px) {
     font-size: 2em;
   }
@@ -20,6 +22,7 @@ $box-background-color: rgba(0,52,151,0.2);
   margin: 10px auto;
   max-width: 250px;
   border-color: $title-color;
+  box-shadow: $text-shadow;
 }
 
 .title-box {
@@ -47,6 +50,7 @@ $box-background-color: rgba(0,52,151,0.2);
 
 .section-box {
   padding: 0;
+  text-shadow: $text-shadow;
   & > div:first-of-type {
     font-size: 2em;
     font-weight: 600;
